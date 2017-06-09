@@ -1,4 +1,4 @@
-package com.lsyz0021.lock;
+package com.lsyz0021.lock.tools;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

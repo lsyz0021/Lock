@@ -2,7 +2,6 @@ package com.lsyz0021.lock;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,10 +9,13 @@ import android.widget.Toast;
 import com.andrognito.patternlockview.PatternLockView;
 import com.andrognito.patternlockview.listener.PatternLockViewListener;
 import com.andrognito.patternlockview.utils.PatternLockUtils;
+import com.lsyz0021.lock.tools.Constant;
+import com.lsyz0021.lock.tools.MD5Utils;
+import com.lsyz0021.lock.tools.SPUtils;
 
 import java.util.List;
 
-public class GestureLock extends AppCompatActivity {
+public class GestureLockActivity extends AppCompatActivity {
 
     private TextView mTvSkip;
     private TextView mTvTips;
@@ -22,7 +24,6 @@ public class GestureLock extends AppCompatActivity {
     private String tempPwd1 = "";
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guidelock);
@@ -59,10 +60,9 @@ public class GestureLock extends AppCompatActivity {
         public void onComplete(List<PatternLockView.Dot> pattern) {
 
             String pwd = PatternLockUtils.patternToString(mPatternLockView, pattern);
-            Log.e("tag", "length = " + pwd.length());
             if (pwd.isEmpty() || pwd.length() < 4) {
                 count = 0;
-                Toast.makeText(GestureLock.this, "请连接至少四个点", Toast.LENGTH_SHORT).show();
+                Toast.makeText(GestureLockActivity.this, "请连接至少四个点", Toast.LENGTH_SHORT).show();
                 mPatternLockView.clearPattern();
                 return;
             }
@@ -75,11 +75,11 @@ public class GestureLock extends AppCompatActivity {
                 count = 0;
                 if (!tempPwd1.equals(pwd)) {
                     mTvTips.setText("两次绘制的图案不一致，请重新设置");
-                    Toast.makeText(GestureLock.this, "两次绘制的图案不一致，请重新设置", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestureLockActivity.this, "两次绘制的图案不一致，请重新设置", Toast.LENGTH_SHORT).show();
                 } else {
                     tempPwd1 = "";
                     String md5Sting = MD5Utils.getPwd(pwd);
-                    Toast.makeText(GestureLock.this, "设置成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestureLockActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
                     SPUtils.putString(Constant.GESTURE_OPEN, md5Sting);
                     finish();
                 }

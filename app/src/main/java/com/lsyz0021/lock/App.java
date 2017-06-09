@@ -7,16 +7,16 @@ import android.content.SharedPreferences;
 /**
  * Created by trila on 15/11/23.
  */
-public class SingletonApplication extends Application {
+public class App extends Application {
     static String LOG_TAG = "HFAX";
-    private static SingletonApplication singletonApplication;
+    private static App singletonApplication;
     private static SharedPreferences userPreferences;
     private static Context context;
 
     @Override
     protected void attachBaseContext(Context context) {
         super.attachBaseContext(context);
-        SingletonApplication.context = context;
+        App.context = context;
         singletonApplication = this;
     }
 
@@ -32,7 +32,7 @@ public class SingletonApplication extends Application {
         return context;
     }
 
-    public static SingletonApplication getApplication() {
+    public static App getApplication() {
         return singletonApplication;
     }
 

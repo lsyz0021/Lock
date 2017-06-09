@@ -1,7 +1,9 @@
-package com.lsyz0021.lock;
+package com.lsyz0021.lock.tools;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.lsyz0021.lock.App;
 
 /**
  * 作者：lcw 16-8-30
@@ -14,7 +16,7 @@ public class SPUtils {
 
     private static SharedPreferences getSharedPreference() {
         if (sp == null) {
-            sp = SingletonApplication.getContext().getSharedPreferences("userDefault", Context.MODE_PRIVATE);
+            sp = App.getContext().getSharedPreferences("userDefault", Context.MODE_PRIVATE);
         }
         return sp;
     }

@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         tv_safe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SafeSetting.class);
+                Intent intent = new Intent(MainActivity.this, SafeSettingActivity.class);
                 startActivity(intent);
             }
         });
