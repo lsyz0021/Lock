@@ -63,7 +63,7 @@ public class GestureLockActivity extends AppCompatActivity {
             if (pwd.isEmpty() || pwd.length() < 4) {
                 count = 0;
                 Toast.makeText(GestureLockActivity.this, "请连接至少四个点", Toast.LENGTH_SHORT).show();
-                mPatternLockView.clearPattern();
+//                mPatternLockView.clearPattern();
                 return;
             }
             count++;
@@ -81,6 +81,7 @@ public class GestureLockActivity extends AppCompatActivity {
                     String md5Sting = MD5Utils.getPwd(pwd);
                     Toast.makeText(GestureLockActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
                     SPUtils.putString(Constant.GESTURE_OPEN, md5Sting);
+                    mPatternLockView.clearPattern();
                     finish();
                 }
             }
